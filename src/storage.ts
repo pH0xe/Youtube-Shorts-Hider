@@ -21,8 +21,10 @@ export class StorageManagement {
     );
   }
 
-  static async getType(): Promise<string> {
-    const type = await this.getKey(StorageKey.TOGGLE_TYPE);
+  static async getType(): Promise<StorageValue.DARKEN | StorageValue.HIDE> {
+    const type = (await this.getKey(StorageKey.TOGGLE_TYPE)) as
+      | StorageValue.DARKEN
+      | StorageValue.HIDE;
     return type ? type : Config.DEFAULT_TYPE;
   }
 

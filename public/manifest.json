@@ -22,9 +22,7 @@
   "permissions": ["storage"],
   "content_scripts": [
     {
-      "js": [
-        "scripts/noshorts.js"
-      ],
+      "js": ["js/noshorts.js"],
       "matches": [
         "https://*.youtube.com/feed/subscriptions",
         "https://youtube.com/feed/subscriptions"
