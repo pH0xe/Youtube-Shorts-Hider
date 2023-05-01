@@ -3,7 +3,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 module.exports = {
   mode: "production",
   entry: {
-    content: path.resolve(__dirname, "..", "src", "content.ts"),
+    noshorts: path.resolve(__dirname, "..", "src", "noshorts.ts"),
     popup: path.resolve(__dirname, "..", "src", "popup.ts"),
   },
   output: {
