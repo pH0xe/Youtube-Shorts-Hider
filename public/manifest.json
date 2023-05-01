@@ -24,8 +24,8 @@
     {
       "js": ["js/noshorts.js"],
       "matches": [
-        "https://*.youtube.com/feed/subscriptions",
-        "https://youtube.com/feed/subscriptions"
+        "https://*.youtube.com/**",
+        "https://youtube.com/**"
       ]
     }
   ]
