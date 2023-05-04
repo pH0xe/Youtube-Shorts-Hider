@@ -8,6 +8,11 @@ const registerEventListeners = () => {
     if (option instanceof HTMLInputElement)
       option.addEventListener('click', saveOptions);
   });
+
+  const dimmingLevel = document.getElementById(
+    'dimming-level'
+  ) as HTMLInputElement;
+  dimmingLevel.addEventListener('input', onDimmingLevelChange);
 };
 
 const saveOptions = (event: Event) => {
@@ -33,6 +38,11 @@ const restoreOptions = () => {
     StorageKey.TOGGLE_TYPE
   ) as HTMLInputElement;
 
+  const dimmingLevelInput = document.getElementById(
+    'dimming-level'
+  ) as HTMLInputElement;
+  const dimmingLevelDisplay = document.getElementById('dimming-value');
+
   StorageManagement.isEnable().then((value) => {
     enable.checked = value;
   });
@@ -40,6 +50,17 @@ const restoreOptions = () => {
   StorageManagement.getType().then((value) => {
     type.checked = value === StorageValue.HIDE;
   });
+};
+
+const onDimmingLevelChange = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  const dimmingLevelDisplay = document.getElementById('dimming-value');
+  if (dimmingLevelDisplay)
+    dimmingLevelDisplay.innerText =
+      target.valueAsNumber.toLocaleString('en-US', {
+        minimumIntegerDigits: 2,
+        useGrouping: false
+      }) + '%';
 };
 
 const init = () => {
