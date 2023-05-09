@@ -1,5 +1,5 @@
 import { Config } from './config';
-import { StorageValue } from './enums/storageValue';
+import { TypeValue } from './enums/storageValue';
 
 export class CssManager {
   private static _instance: CssManager;
@@ -30,8 +30,7 @@ export class CssManager {
     this.resetCss();
     const style = document.createElement('style');
     style.id = Config.STYLE_ID;
-    const action =
-      type === StorageValue.DARKEN ? this._darkenCss : this._hideCss;
+    const action = type === TypeValue.DARKEN ? this._darkenCss : this._hideCss;
     style.innerHTML = `${target} { ${action} }`;
     document.head.appendChild(style);
   }

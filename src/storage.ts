@@ -1,13 +1,16 @@
 import { Config } from './config';
 import { StorageKey } from './enums/storageKey';
-import { StorageValue } from './enums/storageValue';
+import { StatusValue, TypeValue } from './enums/storageValue';
 
 export class StorageManagement {
   private static async getKey(key: StorageKey): Promise<string> {
     return (await chrome.storage.sync.get(key))[key];
   }
 
-  private static setKey(key: StorageKey, value: StorageValue | string): void {
+  private static setKey(
+    key: StorageKey,
+    value: TypeValue | StatusValue | string
+  ): void {
     chrome.storage.sync.set({ [key]: value });
   }
 
@@ -16,15 +19,11 @@ export class StorageManagement {
   }
 
   static async isEnable(): Promise<boolean> {
-    return (
-      (await this.getKey(StorageKey.TOGGLE_ENABLE)) === StorageValue.ENABLE
-    );
+    return (await this.getKey(StorageKey.TOGGLE_ENABLE)) === StatusValue.ENABLE;
   }
 
-  static async getType(): Promise<StorageValue.DARKEN | StorageValue.HIDE> {
-    const type = (await this.getKey(StorageKey.TOGGLE_TYPE)) as
-      | StorageValue.DARKEN
-      | StorageValue.HIDE;
+  static async getType(): Promise<TypeValue> {
+    const type = (await this.getKey(StorageKey.TOGGLE_TYPE)) as TypeValue;
     return type ? type : Config.DEFAULT_TYPE;
   }
 
@@ -36,14 +35,14 @@ export class StorageManagement {
   static setEnable(toggle: HTMLInputElement): void {
     this.setKey(
       StorageKey.TOGGLE_ENABLE,
-      toggle.checked ? StorageValue.ENABLE : StorageValue.DISABLE
+      toggle.checked ? StatusValue.ENABLE : StatusValue.DISABLE
     );
   }
 
   static setType(toggle: HTMLInputElement): void {
     this.setKey(
       StorageKey.TOGGLE_TYPE,
-      toggle.checked ? StorageValue.HIDE : StorageValue.DARKEN
+      toggle.checked ? TypeValue.HIDE : TypeValue.DARKEN
     );
   }
 

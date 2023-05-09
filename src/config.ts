@@ -1,4 +1,4 @@
-import { StorageValue } from './enums/storageValue';
+import { TypeValue } from './enums/storageValue';
 
 export class Config {
   private static readonly DEFAULT_THUMBNAIL =
@@ -9,7 +9,7 @@ export class Config {
     ytd-item-section-renderer:has(${this.DEFAULT_THUMBNAIL})
     `;
 
-  static readonly DEFAULT_TYPE = StorageValue.DARKEN;
+  static readonly DEFAULT_TYPE = TypeValue.DARKEN;
 
   static readonly STYLE_ID = 'youtube-shorts-hider-style';
   static readonly DEFAULT_DARKEN_CSS = 'opacity: 0.1 !important;';
