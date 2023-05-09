@@ -8,7 +8,8 @@ const onStorageChange = async (
   if (await StorageManagement.isEnable()) {
     const type = await StorageManagement.getType();
     const target = await StorageManagement.getCssSelector();
-    CssManager.getInstance().addCss(target, type);
+    const dimming = await StorageManagement.getDimmingLevel();
+    CssManager.getInstance().addAllCss(target, type, dimming);
   } else {
     CssManager.getInstance().resetCss();
   }
@@ -18,7 +19,8 @@ const init = async () => {
   if (await StorageManagement.isEnable()) {
     const type = await StorageManagement.getType();
     const target = await StorageManagement.getCssSelector();
-    CssManager.getInstance().addCss(target, type);
+    const dimming = await StorageManagement.getDimmingLevel();
+    CssManager.getInstance().addAllCss(target, type, dimming);
   }
 };
 

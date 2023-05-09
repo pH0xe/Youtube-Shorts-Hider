@@ -49,3 +49,43 @@ h2 {
   background: var(--color-accent);
   margin: 0.5em 0;
 }
+
+h3,
+#dimming-level-container label {
+  display: block;
+  font-size: large;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+#dimming-level-container {
+  display: block;
+}
+
+#dimming-level {
+  width: 100%;
+}
+
+#dimming-level-container .input-container {
+  display: flex;
+  align-items: center;
+}
+
+#dimming-level-container .input-container input {
+  accent-color: var(--toggle-bg-on);
+}
+
+#dimming-level-container .input-container span {
+  padding: 0.5em 1em;
+  background-color: var(--toggle-bg-off);
+  color: var(--toggle-fg-off);
+}
+
+#dimming-value {
+  width: 4em;
+  text-align: center;
+}

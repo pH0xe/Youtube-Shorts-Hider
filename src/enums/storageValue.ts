@@ -1,7 +1,9 @@
-export enum StorageValue {
+export enum StatusValue {
   ENABLE = 'enable',
-  DISABLE = 'disable',
+  DISABLE = 'disable'
+}
 
+export enum TypeValue {
   HIDE = 'hide',
   DARKEN = 'darken'
 }
