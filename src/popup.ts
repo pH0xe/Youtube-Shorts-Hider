@@ -53,6 +53,7 @@ const saveOptions = (event: Event) => {
       return true;
     case StorageKey.TOGGLE_TYPE:
       StorageManagement.setType(target);
+      toggleDimmingLevel(target);
       return true;
     default:
       return false;
@@ -68,7 +69,14 @@ const restoreOptions = () => {
   StorageManagement.getType().then((value) => {
     if (htmlElements.toggleElements.type)
       htmlElements.toggleElements.type.checked = value === TypeValue.HIDE;
-    if (value === TypeValue.DARKEN) hideDimmingLevel();
+    if (value === TypeValue.HIDE) hideDimmingLevel();
+  });
+
+  StorageManagement.getDimmingLevel().then((value) => {
+    if (htmlElements.dimmingLevelElements.input)
+      htmlElements.dimmingLevelElements.input.value = value.toString();
+    if (htmlElements.dimmingLevelElements.display)
+      htmlElements.dimmingLevelElements.display.innerText = value.toString();
   });
 };
 
@@ -77,11 +85,22 @@ const onDimmingLevelChange = (event: Event) => {
   const dimmingLevelDisplay = htmlElements.dimmingLevelElements.display;
   if (dimmingLevelDisplay)
     dimmingLevelDisplay.innerText = target.valueAsNumber.toString() + '%';
+  StorageManagement.setDimmingLevel(target);
 };
 
 const hideDimmingLevel = () => {
   const dimmingLevelInput = htmlElements.dimmingLevelElements.container;
   if (dimmingLevelInput) dimmingLevelInput.style.display = 'none';
+};
+
+const toggleDimmingLevel = (target: HTMLInputElement) => {
+  const dimmingLevelInput = htmlElements.dimmingLevelElements.container;
+  if (!dimmingLevelInput) return;
+  if (target.checked) {
+    dimmingLevelInput.style.display = 'none';
+    return;
+  }
+  dimmingLevelInput.style.display = 'block';
 };
 
 const init = () => {

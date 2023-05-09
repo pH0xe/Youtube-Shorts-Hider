@@ -32,6 +32,11 @@ export class StorageManagement {
     return selector ? selector : Config.DEFAULT_CSS_SELECTOR;
   }
 
+  static async getDimmingLevel(): Promise<number> {
+    const dimmingLevel = await this.getKey(StorageKey.DIMMING_LEVEL);
+    return dimmingLevel ? parseInt(dimmingLevel) : Config.DEFAULT_DIMMING_LEVEL;
+  }
+
   static setEnable(toggle: HTMLInputElement): void {
     this.setKey(
       StorageKey.TOGGLE_ENABLE,
@@ -52,5 +57,9 @@ export class StorageManagement {
       return;
     }
     this.setKey(StorageKey.CSS_SELECTOR, selector.value);
+  }
+
+  static setDimmingLevel(dimmingLevel: HTMLInputElement): void {
+    this.setKey(StorageKey.DIMMING_LEVEL, dimmingLevel.value);
   }
 }

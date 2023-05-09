@@ -14,4 +14,5 @@ export class Config {
   static readonly STYLE_ID = 'youtube-shorts-hider-style';
   static readonly DEFAULT_DARKEN_CSS = 'opacity: 0.1 !important;';
   static readonly DEFAULT_HIDE_CSS = 'display: none !important;';
+  static readonly DEFAULT_DIMMING_LEVEL = 10;
 }
