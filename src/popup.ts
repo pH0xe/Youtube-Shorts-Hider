@@ -42,6 +42,10 @@ const registerEventListeners = () => {
     'input',
     onDimmingLevelChange
   );
+  htmlElements.dimmingLevelElements.input?.addEventListener(
+    'change',
+    saveOptions
+  );
 };
 
 const saveOptions = (event: Event) => {
@@ -55,6 +59,8 @@ const saveOptions = (event: Event) => {
       StorageManagement.setType(target);
       toggleDimmingLevel(target);
       return true;
+    case StorageKey.DIMMING_LEVEL:
+      StorageManagement.setDimmingLevel(target);
     default:
       return false;
   }
@@ -85,7 +91,6 @@ const onDimmingLevelChange = (event: Event) => {
   const dimmingLevelDisplay = htmlElements.dimmingLevelElements.display;
   if (dimmingLevelDisplay)
     dimmingLevelDisplay.innerText = target.valueAsNumber.toString() + '%';
-  StorageManagement.setDimmingLevel(target);
 };
 
 const hideDimmingLevel = () => {
