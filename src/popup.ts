@@ -82,7 +82,7 @@ const restoreOptions = () => {
     if (htmlElements.dimmingLevelElements.input)
       htmlElements.dimmingLevelElements.input.value = value.toString();
     if (htmlElements.dimmingLevelElements.display)
-      htmlElements.dimmingLevelElements.display.innerText = value.toString();
+      htmlElements.dimmingLevelElements.display.innerText = `${value}%`;
   });
 };
 
