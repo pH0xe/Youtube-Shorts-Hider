@@ -56,11 +56,7 @@ const onDimmingLevelChange = (event: Event) => {
   const target = event.target as HTMLInputElement;
   const dimmingLevelDisplay = document.getElementById('dimming-value');
   if (dimmingLevelDisplay)
-    dimmingLevelDisplay.innerText =
-      target.valueAsNumber.toLocaleString('en-US', {
-        minimumIntegerDigits: 2,
-        useGrouping: false
-      }) + '%';
+    dimmingLevelDisplay.innerText = target.valueAsNumber.toString() + '%';
 };
 
 const init = () => {

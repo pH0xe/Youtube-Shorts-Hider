@@ -84,3 +84,8 @@ h3,
   background-color: var(--toggle-bg-off);
   color: var(--toggle-fg-off);
 }
+
+#dimming-value {
+  width: 4em;
+  text-align: center;
+}
